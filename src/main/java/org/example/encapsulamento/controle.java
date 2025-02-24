@@ -35,48 +35,75 @@ public class controle implements controlador{
         this.tocando = tocando;
     }
 
-    @Override
+    //metodo abstrato.
+    @Override //sobrescrever
     public void ligar() {
+        this.setLigado(true);
 
+    }
+    @Override
+    public void desligar(){
+        this.setLigado(false);
     }
 
     @Override
     public void abrirmenu() {
-
+        System.out.println("MENU");
+        System.out.println("Está ligado!"+isLigado());
+        System.out.println("Está tocando: "+isTocando());
+        for(int i = 0;i <= this.getVolume();i+= 10){
+            System.out.println("|");
+        }
+        System.out.println(isTocando());
     }
 
     @Override
     public void fecharMenu() {
-
+        System.out.println("Fechando menu!");
     }
 
     @Override
     public void maisVolume() {
+        if(isLigado()){
+            this.setVolume(getVolume() + 5);
+        }
 
     }
 
     @Override
     public void menosVolume() {
+        if(isLigado()){
+            this.setVolume(getVolume() - 5);
+        }
 
     }
 
     @Override
     public void ligaMudo() {
+        if(isLigado() && getVolume() > 0){
+            this.setVolume(0);
+        }
 
     }
 
     @Override
     public void desligarMudo() {
-
+        if(isLigado() && getVolume() > 0){
+            this.setVolume(50);
+        }
     }
 
     @Override
     public void play() {
-
+        if(isLigado()){
+            setTocando(true);
+        }
     }
 
     @Override
     public void pause() {
-
+        if(isLigado()){
+            setTocando(false);
+        }
     }
 }
