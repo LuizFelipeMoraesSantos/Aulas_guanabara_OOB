@@ -5,18 +5,22 @@ import java.util.Locale;
 public class TesteLutador {
     public static void main(String[] args){
 
-         int [] l = new int[5];
 
-        Lutador l[0] = new Lutador("Prety Boy","França", 31, 1.75, 68.9);
-        Lutador l[1] = new Lutador("Felipe","Brasil",31,1.75,68.9,14,2,3);
-        Lutador l[2] = new Lutador();
-        Lutador l[3] = new Lutador();
+        Lutador l[] = new Lutador[6];
 
-        l[0].apresentar();
-        l[2].staus();
-        l[3].getCategoria();
-        l[1].ganharLuta();
-        l[0].empatarLuta();
+        l[0] = new Lutador("Prety Boy", "França",
+                31, 1.75, 68.9, 10, 2, 1);
+        l[1] = new Lutador("Luiz Felipe","Brasil",
+                37,1.82,92,10,5,0);
+
+        Luta luta = new Luta();
+        luta.marcarLuta(l[0],l[1]);
+        luta.lutar();
+        l[0].staus();
+        l[1].staus();
+
+
+
 
     }
 }

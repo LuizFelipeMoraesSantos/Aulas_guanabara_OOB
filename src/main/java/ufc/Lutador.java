@@ -2,17 +2,14 @@ package ufc;
 
 public class Lutador implements Controlador {
 
-    private String nome;
-    private String nacionalidade;
+    private String nome,nacionalidade,categoria;
     private int idade;
-    private double altura;
-    private double peso;
-    private String categoria;
-    private int vitoria;
-    private int derrotas;
-    private int empates;
+    private double altura,peso;
+    private int vitoria,derrotas,empates;
 
-    public Lutador(String nome, String nacionalidade, int idade, double altura, double peso, int vitoria, int derrotas, int empates) {
+    public Lutador(String nome, String nacionalidade,
+                   int idade, double altura, double peso,
+                   int vitoria, int derrotas, int empates) {
         this.nome = nome;
         this.nacionalidade = nacionalidade;
         this.idade = idade;
@@ -23,10 +20,10 @@ public class Lutador implements Controlador {
         this.empates = empates;
     }
 
-    public Lutador(){
-    }
 
-    public Lutador(String pretyBoy, String frança, int i, double v, double v1) {
+    public Lutador(String pretyBoy, String frança,
+                   int i, double v,
+                   double v1) {
     }
 
     public String getNome() {
@@ -54,7 +51,7 @@ public class Lutador implements Controlador {
     }
 
     public float getAltura() {
-        return altura;
+        return (float) altura;
     }
 
     public void setAltura(float altura) {
@@ -62,30 +59,20 @@ public class Lutador implements Controlador {
     }
 
     public float getPeso() {
-        return peso;
+        return (float) peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso() {
         this.peso = peso;
-        if(peso <52.2){
-            this.setCategoria("Invalido");
-        } else if (peso <= 70.3) {
-            this.setCategoria("Leve");
-        } else if (peso <= 83.9) {
-            this.setCategoria("Médio");
-        } else if (peso <= 120.2) {
-            this.setCategoria("Peso pesado");
-        }else {
-            System.out.println("Invalido");
-        }
+        this.definirCategoria();
     }
 
     public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
+    public void setCategoria(double peso) {
+        this.peso = peso;
     }
 
     public int getVitoria() {
@@ -128,11 +115,11 @@ public class Lutador implements Controlador {
 
     @Override
     public void staus() {
-        System.out.println(getNome());
+        System.out.println("Lutador: "+getNome());
         System.out.println("é um peso " + getPeso());
-        System.out.println(" com " + getVitoria()+ " vitorias.");
-        System.out.println(getDerrotas() + "derrotas");
-        System.out.println(getEmpates()+"empates");
+        System.out.println("com " + getVitoria()+ " vitorias.");
+        System.out.println(getDerrotas() + "  derrotas");
+        System.out.println(getEmpates()+"  empates.");
     }
 
     @Override
@@ -142,11 +129,25 @@ public class Lutador implements Controlador {
 
     @Override
     public void perderLuta() {
-        setVitoria(getDerrotas() + 1);
+        setDerrotas(getDerrotas() + 1);
     }
 
     @Override
     public void empatarLuta() {
         setEmpates(getEmpates() + 1);
     }
+    private void definirCategoria() {
+        if (peso < 52.2) {
+            this.categoria = "Inválido";
+        } else if (peso <= 70.3) {
+            this.categoria = "Leve";
+        } else if (peso <= 83.9) {
+            this.categoria = "Médio";
+        } else if (peso <= 120.2) {
+            this.categoria = "Pesado";
+        } else {
+            this.categoria = "Inválido";
+        }
+    }
 }
+
