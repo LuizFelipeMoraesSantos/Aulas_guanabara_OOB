@@ -1,7 +1,5 @@
 package org.example.Leitura;
 
-import javax.xml.crypto.Data;
-import java.util.Calendar;
 
 public class Pessoa  {
     private String nome,sexo;
@@ -29,20 +27,25 @@ public class Pessoa  {
         this.sexo = sexo;
     }
 
-    public Data getIdade() {
-        return idade;
+    public int getIdade() {
+        return this.idade;
     }
 
-    public void setIdade(Data idade) {
+    public void setIdade(int idade) {
         this.idade = idade;
     }
 
 
     public void fazerAniversario(){
-            System.out.println("Nome: "+getNome());
-            System.out.println("Idade: "+getIdade());
-            System.out.println("Sexo:" +getSexo());
-            Calendar c = Calendar.getInstance();
-            System.out.println("Nascido em "+c.get(Calendar.DAY_OF_MONTH) + " de "+c.get(Calendar.MONTH) +" "+c.get(Calendar.YEAR)) ;
+           this.idade++;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", sexo='" + sexo + '\'' +
+                ", idade=" + idade +
+                '}';
     }
 }
