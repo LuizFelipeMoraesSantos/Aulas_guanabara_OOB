@@ -7,8 +7,9 @@ public  class Aluno extends Pessoa {
     private String curso;
 
 
-    public void pagarMatricula() {
+    public boolean pagarMensalidade() {
         System.out.println("Matricula PAGA!");
+        return false;
     }
 
     public int getMatricula() {
@@ -27,14 +28,4 @@ public  class Aluno extends Pessoa {
         this.curso = curso;
     }
 
-    @Override
-    public String toString() {
-        return "Aluno"+"\n"+
-                "nome: " + getNome()+"\n"+
-                "Idade: " + getIdade()+ "\n"+
-                "Sexo: " + getSexo()+"\n" +
-                "matricula: " + matricula+"\n" +
-                "curso: '" + curso + '\'' +
-                '}';
-    }
 }
